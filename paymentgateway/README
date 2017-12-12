@@ -1,0 +1,53 @@
+Project: Payment Gateway Integration (Tested only for payUMoney)
+Author: Vikas Tuteja
+Date: 11 Nov, 2017
+
+PREREQUISITES
+ * django 1.6 or above
+ * drf 3.6.1 or above
+
+
+INSTALLING
+ * copy the paymentgateway folder in your Base directory
+ * include paymentgateway in your installed apps settings
+ * activate your virtualenv
+ * ./paymentgateway/setup
+
+
+OVERVIEW
+ * This package is used to integrate the payment gateway with your django application.
+ * P.S: It supports payUMoney as of now, can be evolved to work with other payment gateways.
+
+ * MODELS
+    1. Configuration - Contains the payment gateway service provider's basic configuration- merchant name, key, success & failure urls, etc
+    2. Transaction Request - All the transaction requests sent to the payment gateway are stored here.
+    3. Transaction Response - All the transaction response received from the payment gateway must be saved in this model.
+
+ * API's
+    1. Url: /paymentgateway/transactionrequest/add/?format=json
+       method: POST
+       Usage: This API should be called before a user is redirected to the payUMoney website.
+              It will create a transaction request object, along with the required hash key and unique txn id.
+              A list of form inputs needs to be sent to this API as well as the payment gateway in order to initate the transaction.
+
+       refer sample input form template - paymentgateway/templates/sampleinputform.html
+
+
+    2. Url: /paymentgateway/transactionresponse/<status>/ - where status can be success/failure
+       method: GET
+       Usage: This is a callback API used by payUmoney to redirect the user back to our website after the payment process.
+              It saves an object of the response sent by payUMoney against its OneToOne mapping of the unique transaction id.
+
+       sample response url: http://your_website.com/paymentgateway/transactionresponse/success/?txnid=b9404169e3bf33c46f509596cdc152&status=Completed&
+       payuMoneyId=asd&hash=b12ddb717e03bcec420b23395396b0d00ab709eb568757d29a832d24414e0373a7c8ecd76b922953b8764fd4fe0529289ce2e0362eba8292033d4s&
+       mode=CC&firstname=Vikas&amount=100.00&phone=9146166344&email=vikas.tuteja4@hindustantimes.com&productinfo=xyz&payuMoneyId=123qwe&format=json
+
+       sample response template - paymentgateway/templates/pay_response.html
+
+    P.S: both API's return a json response
+
+
+ADDITIONAL FEATURE
+ * You may map each transaction request to payU with any entity of your application, by simply passing the following 2 params to the transaction add API:-
+    content_type - which is an id of your model and
+    object id - which is the id of the object to which a transaction needs to be mapped.

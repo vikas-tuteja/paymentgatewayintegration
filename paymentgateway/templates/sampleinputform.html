@@ -1,0 +1,26 @@
+<form id="intermediateform" class="leadform" method="POST" action="https://test.payu.in/_payment">
+    <input type='hidden' name='csrfmiddlewaretoken' value='NXsElqD0IScCTUtDJT3SnwMcNbGJYhToiJHPIh9b6Ju94IRiGcY7MSbeQtAG6liJ' />
+
+    <!--hidden params for payU-->
+    <input type="hidden" name="firstname" id="firstname" value="vikas"/>
+    <input type="hidden" name="lastname" id="lastname" value="tuteja"/>
+    <input type="hidden" name="email" id="email" value="vikas.tuteja@hindustantimes.com"/>
+    <input type="hidden" name="phone" id="phone" value="9821115535"/>
+    <input type="hidden" name="amount" id="amount" value="100"/>
+
+    <input type="hidden" name="key" id="key" value="wqeqwe"/>
+    <input type="hidden" name="productinfo" id="productinfo" value="Registration Fees"/>
+    <input type="hidden" name="surl" id="surl" value="http://crackthecode.com/paymentgateway/transactionresponse/success/"/>
+    <input type="hidden" name="furl" id="furl" value="http://crackthecode.com/paymentgateway/transactionresponse/failure/"/>
+    <input type="hidden" name="txnid" id="txnid" value="ce08b2886660696a8160bea4478c45"/>
+    <input type="hidden" name="hash" id="hash" value="b12ddb717e03bcec420b23395396b0d00ab709eb568757d29a832d24414e0373a7c8ecd76b922953b8764fd4fe0529289ce2e0362eba829201231f104f0633d4"/>
+    <input type="hidden" name="service_provider" id="service_provider" value="payu_paisa"/>
+    <input type="hidden" name="payment_gateway" id="payment_gateway" value="1"/>
+
+    <!-- for mapping lead entity to transaction -->
+    <input type="hidden" name="content_type" id="content_type" value="7"/>
+    <input type="hidden" name="object_id" id="object_id" value="7"/>
+
+    <input type="button" value="Confirm" class="submit" id="intermediateformsubmit" />
+</form>
+

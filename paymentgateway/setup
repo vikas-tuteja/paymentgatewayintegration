@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "********************************************"
+echo "Start: Setup for Payment Gateway Integration"
+echo "********************************************"
+echo "Start: Running migrations"
+python manage.py migrate paymentgateway
+echo "Running migrations successfull"
+echo "********************************************"
+echo "Start: Creating basic configuration for payUMoney"
+python manage.py loaddata paymentgateway/payconf.json
+echo "Completed"
+echo "**P.S: Config contains dummy data. Please update it according to your configurations."
+echo "You may have a look at your models at this path - /admin/paymentgateway/"

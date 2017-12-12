@@ -1,0 +1,68 @@
+{% extends 'shared/base.html' %}
+{% block body %}
+    {% include 'shared/menu.html' %}
+    <div class="container">
+        <div class="container-fluid text-center">    
+          <div class="row content">
+            <div class="col-sm-2 sidenav">
+            </div>
+            <div class="col-sm-8 text-left"> 
+              <h1 style="text-align:center">Payment {{results.status|title }}</h1>
+
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>First Name</td>
+        <td>{{results.firstname}}</td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>{{results.phone}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{results.email}}</td>
+      </tr>
+      <tr>
+        <td>Amount</td>
+        <td>Rs. {{results.amount}}</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>
+            {% if results.status == 'success' %}
+                <span style="color:green;">{{results.status}}</span>
+            {% else %}
+                <span style="color:red;">{{results.status}}</span>
+            {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td>payUMoney Id</td>
+        <td>{{results.payuMoneyId}}</td>
+      </tr>
+      <tr>
+        <td>Mode of Payment</td>
+        <td>{{results.mode}}<td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+            </div>
+            <div class="col-sm-2 sidenav">
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
